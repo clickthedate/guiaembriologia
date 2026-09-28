@@ -266,6 +266,81 @@ details.more .inner{padding:0 16px 13px;font-size:14.8px}
 .svgwrap svg{max-width:100%;height:auto}
 .svgwrap figcaption{font-size:12.6px;color:var(--text-faint);margin-top:8px;text-align:left;line-height:1.5}
 .hl{background:var(--amber-soft);padding:0 3px;border-radius:3px}
+
+/* ============ NUEVO: RESUMEN SIMPLE ============ */
+.simple{
+  background:linear-gradient(135deg, var(--accent-soft), var(--accent-2-soft));
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:19px 22px;margin:18px 0 22px;box-shadow:var(--shadow);
+}
+.simple h4{margin:0 0 11px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.simple ol{margin:0;padding-left:20px;font-size:16.4px;line-height:1.62}
+.simple ol li{margin:8px 0}
+.simple ol li::marker{color:var(--accent);font-weight:700}
+
+/* ============ NUEVO: PALABRAS NUEVAS ============ */
+.words{border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);margin:16px 0;overflow:hidden}
+.words > h4{margin:0;padding:11px 17px;background:var(--bg-soft);font-size:12.4px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--text-soft);border-bottom:1px solid var(--border)}
+.words dl{margin:0;padding:13px 17px;display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:5px 16px;font-size:14.8px}
+.words dt{font-weight:650;color:var(--accent)}
+.words dd{margin:0;color:var(--text-soft)}
+@media (max-width:620px){
+  .words dl{grid-template-columns:1fr;gap:1px}
+  .words dd{margin:0 0 9px;padding-left:2px}
+}
+
+/* ============ NUEVO: VIDEOS ============ */
+.vids{margin:18px 0 6px}
+.vids > h4{margin:0 0 10px;font-size:14.6px;display:flex;align-items:center;gap:8px}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:14px}
+.vid{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);
+  box-shadow:var(--shadow);display:flex;flex-direction:column}
+.vid-thumb{position:relative;display:block;aspect-ratio:16/9;background:var(--bg-soft);cursor:pointer;border:0;padding:0;width:100%}
+.vid-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.vid-thumb::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:48px;height:34px;border-radius:9px;background:rgba(200,30,40,.92);
+  box-shadow:0 2px 10px rgba(0,0,0,.35);transition:.18s;
+}
+.vid-thumb::before{
+  content:"";position:absolute;left:50%;top:50%;z-index:2;
+  transform:translate(-40%,-50%);border-style:solid;border-width:8px 0 8px 13px;
+  border-color:transparent transparent transparent #fff;
+}
+.vid-thumb:hover::after{background:rgba(220,35,45,1);transform:translate(-50%,-50%) scale(1.07)}
+.vid-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-thumb.playing::before,.vid-thumb.playing::after{display:none}
+.vid-meta{padding:10px 13px 12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.vid-title{font-size:14px;font-weight:620;line-height:1.35}
+.vid-sub{font-size:12.2px;color:var(--text-faint);display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:auto;padding-top:6px}
+.vid-sub .dur{background:var(--bg-soft);border-radius:5px;padding:1px 6px;font-variant-numeric:tabular-nums}
+.vid-sub a{font-size:12.2px}
+.vid-lang{background:var(--amber-soft);color:var(--amber);border-radius:5px;padding:1px 6px;font-weight:600}
+
+/* ============ NUEVO: DICCIONARIO EMERGENTE ============ */
+em.term.has-def{cursor:help;position:relative}
+em.term.has-def:hover{background:var(--accent-soft);border-radius:3px}
+.defpop{
+  position:absolute;z-index:80;max-width:330px;background:var(--surface);
+  border:1px solid var(--accent);border-radius:11px;padding:12px 15px;
+  box-shadow:0 4px 24px -6px rgba(0,0,0,.35);font-size:14.2px;line-height:1.5;
+  color:var(--text);animation:pop .14s ease-out;
+}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.defpop b{display:block;color:var(--accent);margin-bottom:4px;font-size:14.6px}
+.defpop .close{position:absolute;top:6px;right:9px;cursor:pointer;color:var(--text-faint);font-size:15px;line-height:1;background:none;border:0}
+.dict-hint{font-size:13.2px;color:var(--text-faint);margin:10px 0 0}
+
+/* ============ NUEVO: DICCIONARIO COMPLETO ============ */
+.dict-search{width:100%;max-width:420px;padding:9px 13px;border-radius:10px;border:1px solid var(--border-strong);
+  background:var(--surface);color:var(--text);font-size:14.6px;font-family:inherit;margin:6px 0 16px}
+.dict-search:focus{outline:2px solid var(--accent);outline-offset:1px}
+.dict-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:11px}
+.dict-item{border:1px solid var(--border);border-radius:11px;padding:11px 14px;background:var(--surface);font-size:14.4px}
+.dict-item b{display:block;color:var(--accent);margin-bottom:3px}
+.dict-item span{color:var(--text-soft)}
+.dict-empty{color:var(--text-faint);font-size:14.6px}
 mark.found{background:var(--amber);color:#1a1a1a;border-radius:2px}
 .backtop{position:fixed;right:18px;bottom:18px;z-index:40;opacity:0;pointer-events:none;transition:.2s}
 .backtop.show{opacity:1;pointer-events:auto}
@@ -299,6 +374,12 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   .fc-grid{grid-template-columns:1fr 1fr}
   .q .why{display:block!important}
   section.unit{page-break-before:always}
+  .vid-thumb{display:none}
+  .vid{break-inside:avoid}
+  .vid-grid{grid-template-columns:1fr 1fr}
+  .defpop{display:none}
+  .dict-search{display:none}
+  .simple{background:#f4f4f4;box-shadow:none}
 }
 </style>
 </head>
@@ -319,7 +400,8 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <nav class="toc">
   <h4>Temario</h4>
   <div class="toc-inner">
-    <a href="#inicio"><span class="tnum">00</span>Cómo usar la guía</a>
+    <a href="#inicio"><span class="tnum">··</span>Cómo usar la guía</a>
+    <a href="#u0"><span class="tnum">00</span>Antes de empezar</a>
     <a href="#u1"><span class="tnum">01</span>División celular: Meiosis</a>
     <a href="#u2"><span class="tnum">02</span>Gametogénesis</a>
     <a href="#u3"><span class="tnum">03</span>Señalización molecular</a>
@@ -333,9 +415,10 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
     <a href="#u11"><span class="tnum">11</span>Serosas y diafragma</a>
     <a href="#u12"><span class="tnum">12</span>Feto y placenta</a>
     <hr>
+    <a href="#videos"><span class="tnum">▶</span>Todos los videos</a>
     <a href="#flashcards"><span class="tnum">★</span>Flashcards globales</a>
     <a href="#quiz"><span class="tnum">✓</span>Autoevaluación</a>
-    <a href="#glosario"><span class="tnum">§</span>Glosario</a>
+    <a href="#glosario"><span class="tnum">§</span>Diccionario</a>
   </div>
 </nav>
 
@@ -343,7 +426,8 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section id="inicio" class="hero">
   <div class="kicker">Guía de estudio interactiva</div>
   <h1>Embriología: de una célula<br>a un cuerpo entero</h1>
-  <p class="lead">Doce unidades que siguen el temario del curso, desde la meiosis hasta la placenta a término. Cada bloque trae la explicación formal, la versión «en palabras normales», una imagen mental para recordarlo, los detalles que suelen caer en examen y sus correlaciones clínicas.</p>
+  <p class="lead">Doce unidades que siguen el temario del curso, desde la meiosis hasta la placenta a término. Cada una empieza con la versión <strong>sin tecnicismos</strong>, sigue con las palabras nuevas explicadas, un video, y solo después el detalle que te van a preguntar.</p>
+  <p class="lead" style="font-size:16px"><strong>¿Es tu primer contacto con genética?</strong> Entonces no empieces por la unidad 1: empieza por <a href="#u0">Antes de empezar</a>. Son 10 minutos y te ahorran semanas de sentirte perdida.</p>
 
   <div class="srcnote">
     <span style="font-size:19px;line-height:1">📖</span>
@@ -352,8 +436,9 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 
   <div class="hero-stats">
     <div><b>12</b><span>unidades</span></div>
-    <div><b>8</b><span>capítulos</span></div>
+    <div><b>35</b><span>videos</span></div>
     <div><b>253</b><span>flashcards</span></div>
+    <div><b>143</b><span>palabras</span></div>
     <div><b>24</b><span>preguntas</span></div>
   </div>
 
@@ -361,10 +446,12 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
     <div class="card">
       <h4>🧭 Cómo usar esta guía</h4>
       <ol style="margin-bottom:0">
-        <li>Lee el texto de la unidad y detente en los bloques <span class="pill">en palabras normales</span> y <span class="pill v">cómo imaginarlo</span>: son los que fijan el concepto.</li>
-        <li>Marca mentalmente los recuadros <span class="pill a">ojo con este detalle</span>: son cifras y nombres que se preguntan tal cual.</li>
-        <li>Al final de cada unidad, voltea las flashcards <strong>sin mirar</strong> la respuesta. Si dudas, vuelve al texto.</li>
-        <li>Cierra con la <a href="#quiz">autoevaluación</a>; las explicaciones aparecen al responder.</li>
+        <li>Abre la unidad y lee <strong>«La unidad en 5 frases»</strong>. Es el tema entero sin tecnicismos: si entiendes eso, ya tienes el esqueleto.</li>
+        <li>Pasa por <strong>«Palabras nuevas»</strong>. Son 5 o 6 términos; con eso el texto largo deja de frenarte.</li>
+        <li><strong>Mira el video</strong> de la unidad antes de leer. Ver el movimiento hace que el texto tenga sentido.</li>
+        <li>Ahora sí, lee el texto. <strong>Haz clic en cualquier palabra <strong style="color:var(--accent);border-bottom:1px dotted var(--accent)">subrayada</strong></strong> y verás su definición en lenguaje normal, ahí mismo.</li>
+        <li>En la primera pasada <strong>sáltate los recuadros verdes 🧬</strong>: son nombres de genes. Vuelve a ellos cuando lo demás esté claro.</li>
+        <li>Cierra con las flashcards y la <a href="#quiz">autoevaluación</a>.</li>
       </ol>
     </div>
     <div class="card">
@@ -398,9 +485,161 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
     </div>
   </details>
 </section>
+<section class="unit" id="u0">
+  <div class="unit-head"><span class="unit-num">00</span><h2>Antes de empezar: el vocabulario mínimo</h2></div>
+  <p class="unit-sub">Si es tu primer contacto con genética, empieza aquí · 10 minutos</p>
+
+  <div class="box plain">
+    <h4>🧠 Esto es normal</h4>
+    <p style="margin-bottom:0">Embriología se estudia <strong>después</strong> de biología celular y genética, y da por sabidas unas 20 palabras. Si nadie te las explicó antes, el libro se vuelve ruido: cada frase trae tres términos que no conoces y para cuando descifras el tercero ya olvidaste el principio. <strong>No es que no entiendas embriología; es que te falta el diccionario.</strong> Esta unidad es ese diccionario. Léela una vez y el resto de la guía cambia por completo.</p>
+  </div>
+
+  <h3><span class="ico">📚</span>La idea que ordena todo: la biblioteca</h3>
+  <p>Casi toda la genética se entiende con una sola comparación. Tu cuerpo es una <strong>biblioteca</strong>:</p>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>En la biblioteca</th><th>En tu cuerpo</th><th>Qué es en una frase</th></tr></thead>
+    <tbody>
+      <tr><td>El edificio</td><td class="hi">La célula</td><td>La unidad viva más pequeña. Tienes unos 30 billones.</td></tr>
+      <tr><td>La sala cerrada donde están los libros</td><td class="hi">El núcleo</td><td>La caja fuerte donde se guarda el ADN.</td></tr>
+      <tr><td>El texto escrito</td><td class="hi">El ADN</td><td>El manual de instrucciones, escrito con 4 letras: A, T, G, C.</td></tr>
+      <tr><td>Un capítulo con una receta</td><td class="hi">Un gen</td><td>El trozo de ADN que explica cómo hacer <em>una</em> proteína.</td></tr>
+      <tr><td>Un tomo encuadernado</td><td class="hi">Un cromosoma</td><td>El ADN enrollado y empaquetado. Tienes 46 tomos.</td></tr>
+      <tr><td>El plato ya cocinado</td><td class="hi">La proteína</td><td>La pieza que hace el trabajo: músculo, hormona, enzima, receptor.</td></tr>
+      <tr><td>Fotocopiar una página</td><td class="hi">Transcripción</td><td>Copiar un gen a ARN para sacarlo del núcleo sin mover el original.</td></tr>
+      <tr><td>Cocinar siguiendo la fotocopia</td><td class="hi">Traducción</td><td>Leer ese ARN y fabricar la proteína.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box key">
+    <h4>🔑 Si te quedas con una sola frase</h4>
+    <p style="margin-bottom:0"><strong>ADN → ARN → proteína.</strong> El ADN se queda guardado, el ARN es la fotocopia que sale a la calle, y la proteína es lo que de verdad hace cosas. Todo lo demás en esta guía son detalles sobre <em>cuándo</em> y <em>dónde</em> se fotocopia cada receta.</p>
+  </div>
+
+  <h3><span class="ico">🔢</span>Por qué 46, y por qué 23</h3>
+  <p>Tus células normales tienen <strong>46 cromosomas: 23 que te dio tu madre y 23 que te dio tu padre</strong>. Vienen emparejados, como calcetines: el cromosoma 7 de mamá con el cromosoma 7 de papá. A tener los pares completos se le llama <em class="term">diploide</em> («doble»).</p>
+  <p>Ahora piensa en el problema: si el óvulo tuviera 46 y el espermatozoide 46, el bebé tendría 92. Y su hijo, 184. Por eso los óvulos y los espermatozoides llevan <strong>solo la mitad: 23 cromosomas sueltos, sin pareja</strong>. A eso se le llama <em class="term">haploide</em> («la mitad»).</p>
+
+  <div class="box imagine">
+    <h4>👀 Cómo imaginarlo</h4>
+    <p style="margin-bottom:0">Dos personas tienen cada una un mazo completo de 52 cartas y quieren armar <strong>un solo mazo</strong> entre los dos. La única forma es que cada uno aporte medio mazo. La <strong>meiosis</strong> es exactamente eso: el proceso de partir el mazo a la mitad antes de juntarlo con el de la otra persona.</p>
+  </div>
+
+  <h3><span class="ico">✂️</span>Las dos formas de dividirse una célula</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th></th><th>Mitosis</th><th>Meiosis</th></tr></thead>
+    <tbody>
+      <tr><td class="hi">¿Para qué sirve?</td><td>Crecer y reparar. La usan casi todas tus células.</td><td>Fabricar óvulos y espermatozoides. Solo en ovario y testículo.</td></tr>
+      <tr><td class="hi">¿Cuántas divisiones?</td><td>Una</td><td><strong>Dos</strong> seguidas</td></tr>
+      <tr><td class="hi">¿Cuántas células salen?</td><td>2</td><td>4</td></tr>
+      <tr><td class="hi">¿Con cuántos cromosomas?</td><td>46 (igual que la madre)</td><td>23 (la mitad)</td></tr>
+      <tr><td class="hi">¿Son idénticas?</td><td>Sí, copias exactas</td><td><strong>No</strong>, todas distintas</td></tr>
+      <tr><td class="hi">Resumen</td><td>Fotocopiar</td><td>Repartir y barajar</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Esa última fila es la razón de que no seas idéntico a tus hermanos, aunque vengan de los mismos padres: <strong>la meiosis baraja las cartas cada vez</strong>.</p>
+
+  <h3><span class="ico">🗣️</span>Cómo hablan las células entre sí</h3>
+  <p>El embrión no tiene un arquitecto: las células se van diciendo unas a otras qué hacer. Ese mecanismo se repite en toda la guía y funciona siempre igual:</p>
+  <ol>
+    <li>Una célula fabrica y suelta una molécula mensajera: el <em class="term">ligando</em>. <strong>Es la llave.</strong></li>
+    <li>Otra célula tiene en su superficie una proteína que encaja con ella: el <em class="term">receptor</em>. <strong>Es la cerradura.</strong></li>
+    <li>Al encajar llave y cerradura, dentro de la segunda célula se cae una fila de fichas de dominó.</li>
+    <li>La última ficha <strong>enciende o apaga un gen</strong>. Y al encender ese gen, la célula cambia de destino.</li>
+  </ol>
+  <p>Cuando en la guía leas «la vía de señalización SHH» o «la vía WNT», solo están diciendo <strong>de qué llave y qué cerradura estamos hablando</strong>. Los nombres raros (sonic hedgehog, frizzled, patched, smoothened) son los apodos que les pusieron los investigadores en la mosca de la fruta; no significan nada en sí mismos.</p>
+
+  <div class="box exam">
+    <h4>⚠️ Truco para no saturarte con los nombres de genes</h4>
+    <p style="margin-bottom:0">No memorices todos los genes a la primera. En cada vía, quédate primero con <strong>qué hace</strong> y <strong>dónde</strong>; los nombres se pegan solos al repetirlos. En la guía los genes van siempre en los recuadros verdes 🧬, así que puedes saltártelos en la primera lectura y volver después.</p>
+  </div>
+
+  <h3><span class="ico">🍼</span>Las 8 palabras de embriología que se repiten siempre</h3>
+  <div class="words">
+    <h4>Si entiendes estas ocho, entiendes el 80% de los títulos</h4>
+    <dl>
+      <dt>Gameto</dt><dd>La célula sexual: óvulo o espermatozoide. Tiene 23 cromosomas.</dd>
+      <dt>Cigoto</dt><dd>La primerísima célula del nuevo ser, al unirse los dos gametos. Ya tiene 46.</dd>
+      <dt>Embrión</dt><dd>El nuevo ser desde la fecundación hasta la semana 8.</dd>
+      <dt>Feto</dt><dd>El mismo, de la semana 9 al nacimiento. Solo cambia el nombre.</dd>
+      <dt>Capa germinal</dt><dd>Una de las tres «telas» (ectodermo, mesodermo, endodermo) con las que se construye todo el cuerpo.</dd>
+      <dt>Epitelio</dt><dd>Células muy pegadas formando láminas o tubos, como papel tapiz.</dd>
+      <dt>Mesénquima</dt><dd>Células sueltas y dispersas nadando en gel. Lo contrario del epitelio.</dd>
+      <dt>Trofoblasto</dt><dd>La parte del embrión temprano que <strong>no</strong> forma al bebé: forma la placenta.</dd>
+    </dl>
+  </div>
+
+  <div class="box imagine">
+    <h4>👀 Las tres capas germinales, de una vez por todas</h4>
+    <p style="margin-bottom:0">Imagina un <strong>sándwich de tres rebanadas</strong>, y que el cuerpo entero se construye doblando ese sándwich:</p>
+    <ul style="margin-bottom:0;margin-top:8px">
+      <li><strong>Ectodermo</strong> (la de arriba) → lo que te conecta con el mundo: <strong>piel y sistema nervioso</strong>.</li>
+      <li><strong>Mesodermo</strong> (la del medio) → el relleno: <strong>huesos, músculo, corazón, sangre, riñón</strong>.</li>
+      <li><strong>Endodermo</strong> (la de abajo) → el tubo de dentro: <strong>revestimiento del digestivo y del respiratorio</strong>, más hígado y páncreas.</li>
+    </ul>
+  </div>
+
+  <h3><span class="ico">🧭</span>Cómo leer el resto de la guía sin saturarte</h3>
+  <div class="card">
+    <ol style="margin-bottom:0">
+      <li><strong>Lee primero el recuadro «La unidad en 5 frases»</strong> que abre cada tema. Es la versión sin tecnicismos. Si entiendes eso, ya tienes el esqueleto.</li>
+      <li><strong>Revisa «Palabras nuevas»</strong> antes del texto largo. Son 5 o 6 términos; con eso ya no te van a frenar.</li>
+      <li><strong>Mira el video</strong> de la unidad. Ver el movimiento hace que el texto tenga sentido.</li>
+      <li><strong>Ahora sí, lee el texto completo.</strong> Cualquier palabra en <strong style="color:var(--accent);border-bottom:1px dotted var(--accent)">vino y subrayada</strong> se explica sola: <strong>haz clic encima</strong> y aparece la definición en lenguaje normal.</li>
+      <li><strong>Salta los recuadros verdes 🧬 en la primera pasada.</strong> Son los nombres de genes; vuelve a ellos cuando lo demás ya esté claro.</li>
+      <li><strong>Cierra con las flashcards.</strong> Si fallas una, vuelve solo a ese párrafo.</li>
+    </ol>
+  </div>
+
+  <p class="dict-hint">💡 Prueba ahora: haz clic en <em class="term">meiosis</em> o en <em class="term">trofoblasto</em> y mira lo que pasa.</p>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[
+      {"id":"H54DmGEnlEk","t":"ADN, gen y cromosoma: las diferencias","c":"A Cierta Ciencia","d":"1:45"},
+      {"id":"tfDRCSjqqvQ","t":"ADN, cromosomas y genes","c":"Es Ciencia","d":"2:16"},
+      {"id":"cwLVh2JHRYI","t":"Síntesis de proteínas: transcripción y traducción (nivel principiante)","c":"Camach Learn","d":"4:54"},
+      {"id":"0me8gOydg64","t":"Mitosis y meiosis: explicación fácil de sus diferencias","c":"Biologicamente","d":"6:36"}
+      ]'></div>
+  </div>
+</section>
 <section class="unit" id="u1">
   <div class="unit-head"><span class="unit-num">01</span><h2>División celular: Meiosis</h2></div>
   <p class="unit-sub">Langman, cap. 2 · Teoría cromosómica de la herencia</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Tus células normales llevan 46 cromosomas emparejados; los óvulos y los espermatozoides llevan solo 23.</li>
+      <li>La <strong>meiosis</strong> es la máquina que hace ese recorte, y necesita <strong>dos divisiones seguidas</strong> para lograrlo.</li>
+      <li>En la <strong>primera</strong> división se separan las parejas de cromosomas. En la <strong>segunda</strong> se separan las dos copias de cada uno.</li>
+      <li>Justo antes de separarse, las parejas se abrazan e <strong>intercambian trozos</strong>. Por eso cada óvulo y cada espermatozoide es irrepetible, y por eso no eres idéntico a tus hermanos.</li>
+      <li>Si una pareja no se separa bien (<strong>no disyunción</strong>), el bebé acaba con un cromosoma de más o de menos: de ahí salen el síndrome de Down, el de Turner y los demás.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Homólogos</dt><dd>Los dos cromosomas de un mismo par: el de mamá y el de papá. Por ejemplo, los dos cromosomas 7.</dd>
+      <dt>Sinapsis</dt><dd>Que esos dos homólogos se alineen pegaditos, uno junto al otro. Solo pasa en la meiosis.</dd>
+      <dt>Cromátidas hermanas</dt><dd>Las dos copias idénticas de un cromosoma tras duplicarse, aún unidas por la cintura.</dd>
+      <dt>Entrecruzamiento</dt><dd>El intercambio de trozos entre homólogos. El punto donde se cruzan se llama quiasma.</dd>
+      <dt>No disyunción</dt><dd>Que dos cromosomas que debían separarse se vayan juntos. Deja un gameto con 24 y otro con 22.</dd>
+      <dt>Trisomía / monosomía</dt><dd>Tener 3 copias de un cromosoma en vez de 2 (trisomía) o solo 1 (monosomía).</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "awXSXrnK04s", "t": "Meiosis paso a paso", "c": "Es Ciencia", "d": "6:23", "lang": ""}, {"id": "0me8gOydg64", "t": "Mitosis y meiosis: sus diferencias", "c": "Biologicamente", "d": "6:36", "lang": ""}, {"id": "EOnNLBnQviQ", "t": "El origen de la trisomía 21", "c": "Salud en Corto", "d": "4:26", "lang": ""}]'></div>
+  </div>
 
   <p>Los rasgos de un individuo nuevo los determinan genes específicos contenidos en los cromosomas heredados del padre y de la madre. Los humanos tienen alrededor de <strong>23 000 genes en 46 cromosomas</strong>. Los genes de un mismo cromosoma tienden a heredarse juntos y por eso se llaman <em class="term">genes ligados</em>.</p>
 
@@ -623,6 +862,37 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">02</span><h2>Gametogénesis: ovogénesis y espermatogénesis</h2></div>
   <p class="unit-sub">Langman, cap. 2 · Conversión de células germinales en gametos</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Las células que un día serán óvulos o espermatozoides <strong>no nacen en el ovario ni en el testículo</strong>: aparecen fuera del embrión y tienen que caminar hasta ahí.</li>
+      <li>En la mujer la fabricación <strong>empieza antes de nacer</strong> y se queda congelada a la mitad, a veces durante 40 años.</li>
+      <li>Cada mes se despiertan de 15 a 20 folículos, pero <strong>normalmente solo uno</strong> llega a ovular; el resto se muere por el camino.</li>
+      <li>En el hombre no empieza hasta la pubertad, pero después no para: unos <strong>300 millones de espermatozoides al día</strong>.</li>
+      <li>De una célula madre femenina sale <strong>un solo óvulo</strong> (y tres desechos llamados cuerpos polares). De una masculina salen <strong>cuatro espermatozoides</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Célula germinal primordial</dt><dd>La célula «abuela» de los gametos, que migra desde fuera del embrión hasta la gónada.</dd>
+      <dt>Ovogonia</dt><dd>La célula que se divide muchas veces en el ovario fetal antes de convertirse en ovocito.</dd>
+      <dt>Ovocito primario</dt><dd>El óvulo a medio hacer, detenido a mitad de la meiosis desde antes de nacer.</dd>
+      <dt>Folículo</dt><dd>El ovocito más las células que lo rodean y lo cuidan. Va pasando por etapas hasta ovular.</dd>
+      <dt>Zona pelúcida</dt><dd>La cáscara de gel que envuelve al óvulo.</dd>
+      <dt>Espermiogénesis</dt><dd>La última fase: la célula redonda se transforma en espermatozoide con cabeza y cola.</dd>
+      <dt>Células de Sertoli</dt><dd>Las «niñeras» del testículo: sostienen y alimentan a los espermatozoides en formación.</dd>
+      <dt>Células de Leydig</dt><dd>Las que están fuera de los túbulos y fabrican testosterona cuando les llega la LH.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "a1O5yiWPUqk", "t": "Gametogénesis: ovogénesis y espermatogénesis", "c": "Dr. Macrófago", "d": "10:04", "lang": ""}, {"id": "b8qxYjT6iAk", "t": "Ovogénesis: cómo se forman los ovocitos", "c": "Dr. Franco Kelly", "d": "6:33", "lang": ""}, {"id": "h-IbOAG059c", "t": "Espermatogénesis: cómo se forman los espermatozoides", "c": "Dr. Franco Kelly", "d": "6:50", "lang": ""}]'></div>
+  </div>
+
   <h3><span class="ico">🚶</span>Células germinales primordiales: un viaje obligatorio</h3>
   <p>El desarrollo comienza con la fecundación, la unión del espermatozoide y el ovocito para formar el cigoto. Los gametos derivan de las <em class="term">células germinales primordiales (CGP)</em>, que:</p>
   <ol>
@@ -801,6 +1071,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section class="unit" id="u3">
   <div class="unit-head"><span class="unit-num">03</span><h2>Señalización y regulación moleculares · Transcripción de genes</h2></div>
   <p class="unit-sub">Langman, cap. 1 · Introducción a la regulación y la señalización moleculares</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Todas tus células tienen <strong>exactamente el mismo ADN</strong>. Lo que hace distinta a una neurona de una célula del hígado es <strong>qué genes tiene encendidos</strong>.</li>
+      <li>Encender un gen significa copiarlo a ARN (transcripción). Para poder copiarlo, el ADN tiene que <strong>desenrollarse</strong> primero.</li>
+      <li>Los <strong>factores de transcripción</strong> son los interruptores. Los <strong>potenciadores</strong> suben el volumen de un gen y los <strong>silenciadores</strong> lo bajan.</li>
+      <li>Las células se dan órdenes con <strong>llaves y cerraduras</strong>: una suelta un mensajero (ligando), otra lo recibe con su receptor, y dentro se cae una fila de dominó que acaba encendiendo un gen.</li>
+      <li>Hay <strong>cuatro familias de mensajeros</strong> que se repiten una y otra vez en todo el embrión: FGF, WNT, hedgehog y TGF-β. Si te aprendes esas cuatro, reconocerás el 90% de las vías del libro.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Cromatina</dt><dd>El ADN tal como está guardado de verdad: enrollado sobre proteínas, no como un hilo suelto.</dd>
+      <dt>Exón / intrón</dt><dd>El exón es la parte útil del gen, la que se traduce. El intrón es relleno que se recorta y se tira.</dd>
+      <dt>Promotor</dt><dd>El «botón de encendido» al principio del gen, donde se engancha la maquinaria que lo copia.</dd>
+      <dt>Metilación</dt><dd>Poner una marca química sobre el ADN para callarlo. Es la cinta adhesiva que sella una página.</dd>
+      <dt>Paracrino</dt><dd>Mandar el mensaje soltándolo al medio para que llegue a las células de al lado. Mensaje en una botella.</dd>
+      <dt>Yuxtacrino</dt><dd>Mandar el mensaje tocando directamente a la célula vecina, sin soltar nada. Tocar el hombro.</dd>
+      <dt>Morfógeno</dt><dd>Una sustancia que se reparte en degradado; las células saben dónde están según cuánta les llega.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "cwLVh2JHRYI", "t": "Transcripción y traducción (nivel principiante)", "c": "Camach Learn", "d": "4:54", "lang": ""}, {"id": "KVdBdq_Y9uc", "t": "Interacción ligando-receptor", "c": "Metabolismo", "d": "2:44", "lang": ""}, {"id": "s9MVWqEBA84", "t": "Señalización autocrina, paracrina y yuxtacrina", "c": "Guillermo Villagómez", "d": "9:10", "lang": ""}, {"id": "_GFL6cjUn6E", "t": "Transducción y señalización celular", "c": "Pares de Bases", "d": "4:17", "lang": ""}]'></div>
+  </div>
 
   <p>El desarrollo embrionario está dirigido por genomas que contienen toda la información necesaria para formar un individuo. Esa información está codificada en el ADN, en secuencias llamadas <strong>genes</strong>, que codifican proteínas; algunas de esas proteínas regulan la expresión de otros genes y actúan como <strong>moléculas de señalización que organizan el desarrollo</strong>.</p>
   <p>Existen alrededor de <strong>23 000 genes</strong> en el genoma humano —solo una quinta parte de los 100 000 esperados antes del Proyecto Genoma Humano—. La hipótesis «un gen-una proteína» quedó desechada: por distintos mecanismos un solo gen puede dar origen a muchas proteínas, hasta alcanzar cerca de <strong>100 000 proteínas</strong>.</p>
@@ -1022,6 +1322,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">04</span><h2>Primera semana · Ciclo ovárico y fecundación</h2></div>
   <p class="unit-sub">Langman, cap. 3 · De la ovulación a la implantación</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Cada mes el cerebro le manda hormonas al ovario: la <strong>FSH</strong> hace crecer folículos y un pico de <strong>LH</strong> dispara la ovulación.</li>
+      <li>El óvulo sale del ovario y las <strong>fimbrias</strong> de la trompa lo barren hacia dentro. Tarda 3 o 4 días en llegar al útero.</li>
+      <li>De los <strong>200 a 300 millones</strong> de espermatozoides depositados, solo llegan <strong>300 a 500</strong> al sitio de la fecundación. Y solo <strong>uno</strong> entra.</li>
+      <li>Antes de poder entrar, el espermatozoide necesita <strong>7 horas de preparación</strong> (capacitación) y después abrir su bolsa de enzimas (reacción acrosómica).</li>
+      <li>En cuanto entra uno, el óvulo <strong>se blinda</strong> para que no entre ningún otro, termina su meiosis y se forma el cigoto: 46 cromosomas y sexo ya decidido.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>FSH</dt><dd>Hormona que hace crecer los folículos del ovario. Su nombre significa «estimulante del folículo».</dd>
+      <dt>LH</dt><dd>Hormona cuyo pico brusco a mitad del ciclo revienta el folículo y provoca la ovulación.</dd>
+      <dt>Folículo de Graaf</dt><dd>El folículo ya maduro, de 25 mm, a punto de ovular.</dd>
+      <dt>Cuerpo lúteo</dt><dd>Lo que queda del folículo tras ovular. Fabrica progesterona para sostener un posible embarazo.</dd>
+      <dt>Capacitación</dt><dd>Las 7 horas de «acondicionamiento» que necesita el espermatozoide dentro del aparato femenino.</dd>
+      <dt>Reacción acrosómica</dt><dd>Cuando el espermatozoide abre la bolsa de enzimas de su cabeza para perforar la cáscara del óvulo.</dd>
+      <dt>Polispermia</dt><dd>Que entre más de un espermatozoide. Es letal, y el óvulo tiene dos mecanismos para impedirlo.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "Y1is4aou518", "t": "Primera semana de gestación", "c": "Dr. Franco Kelly", "d": "6:01", "lang": ""}, {"id": "_ouIUYjGH1U", "t": "Fecundación y primera semana del desarrollo", "c": "Dr. Macrófago", "d": "10:19", "lang": ""}]'></div>
+  </div>
+
   <h3><span class="ico">🔄</span>El ciclo ovárico</h3>
   <p>Los ciclos sexuales están controlados por el <strong>hipotálamo</strong>. La <strong>GnRH</strong> hipotalámica actúa sobre la adenohipófisis, que secreta las gonadotropinas <strong>FSH</strong> y <strong>LH</strong>, y estas estimulan y controlan los cambios cíclicos del ovario.</p>
   <p>Al inicio de cada ciclo, entre <strong>15 y 20 folículos primarios (preantrales)</strong> son estimulados a crecer por la FSH. La FSH no es necesaria para que el folículo primordial llegue a folículo primario, <strong>pero sin ella esos folículos primarios mueren y se atresian</strong>. En condiciones normales <strong>solo uno alcanza la madurez completa</strong>; los demás degeneran. Cuando un folículo sufre atresia, el ovocito y sus células foliculares degeneran y los sustituye tejido conectivo: el <em class="term">cuerpo o folículo atrésico</em>.</p>
@@ -1199,6 +1529,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">05</span><h2>Segmentación, blastocisto e implantación</h2></div>
   <p class="unit-sub">Langman, cap. 3 · Del cigoto bicelular al blastocisto que se ancla</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>El cigoto se parte en 2, luego 4, luego 8… pero <strong>el embrión no crece</strong>: solo se va troceando, así que cada célula es más pequeña que la anterior.</li>
+      <li>Hacia el día 3 o 4 es una bolita compacta de 16 células (<strong>mórula</strong>) que ya tiene un <strong>adentro</strong> y un <strong>afuera</strong>.</li>
+      <li>Las de adentro formarán al bebé. Las de afuera formarán la placenta. <strong>Esa es la primera decisión importante de tu vida</strong> y se toma en el día 3.</li>
+      <li>Entra líquido, se forma una cavidad y la bolita pasa a llamarse <strong>blastocisto</strong>.</li>
+      <li>Hacia el <strong>día 6</strong> el blastocisto se pega a la pared del útero y empieza a excavar, con el mismo truco de velcro que usan los glóbulos blancos.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Blastómera</dt><dd>Cada una de las células del embrión en sus primeros días.</dd>
+      <dt>Compactación</dt><dd>El momento en que esas células se aprietan y dejan de verse como bolitas sueltas.</dd>
+      <dt>Mórula</dt><dd>El embrión de 16 células, del día 3. Se llama así porque parece una mora.</dd>
+      <dt>Blastocele</dt><dd>La cavidad llena de líquido que aparece dentro y convierte la mórula en blastocisto.</dd>
+      <dt>Embrioblasto</dt><dd>El grupito interno de células del que saldrá el bebé.</dd>
+      <dt>Trofoblasto</dt><dd>La capa externa. No forma al bebé: forma la placenta y excava el útero.</dd>
+      <dt>Implantación</dt><dd>El proceso de pegarse y meterse en la pared del útero. Ocurre hacia el día 6.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "f40mQsIjjsw", "t": "Segmentación y blastulación", "c": "Dr. Franco Kelly", "d": "3:57", "lang": ""}, {"id": "UhMRbmEorzc", "t": "Segmentación e implantación del blastocisto", "c": "La Embriologuía", "d": "9:57", "lang": ""}]'></div>
+  </div>
+
   <h3><span class="ico">➗</span>Segmentación</h3>
   <p>Una vez que el cigoto alcanza la etapa bicelular sufre una serie de divisiones mitóticas que aumentan el número de células. Estas células, <strong>cada vez más pequeñas con cada división</strong>, se llaman <em class="term">blastómeras</em>.</p>
 
@@ -1372,6 +1732,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">06</span><h2>Segunda semana · Del día 8 al 13</h2></div>
   <p class="unit-sub">Langman, cap. 4 · Disco germinal bilaminar · «La semana de los dos»</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Esta semana <strong>todo viene de a dos</strong>: dos capas de trofoblasto, dos capas de embrión, dos hojas de mesodermo y dos cavidades. Por eso se le llama «la semana de los dos».</li>
+      <li>El trofoblasto se parte en <strong>citotrofoblasto</strong> (el que se divide y hace células nuevas) y <strong>sincitiotrofoblasto</strong> (el que excava el útero y nunca se divide).</li>
+      <li>El embrión de verdad es un <strong>disco plano de dos pisos</strong>: epiblasto arriba, hipoblasto abajo. Mide 0.1 a 0.2 mm; casi todo lo que crece esta semana es infraestructura.</li>
+      <li>El sincitiotrofoblasto <strong>rompe los vasos de la madre</strong> y su sangre empieza a bañar al embrión: nace la circulación uteroplacentaria.</li>
+      <li>Ese mismo sincitiotrofoblasto fabrica la <strong>hCG</strong>, la hormona que detecta la prueba de embarazo de farmacia.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Citotrofoblasto</dt><dd>La capa interna del trofoblasto, con células separadas, que sí se divide.</dd>
+      <dt>Sincitiotrofoblasto</dt><dd>La capa externa, una masa con muchos núcleos y sin fronteras entre células. Es la que invade.</dd>
+      <dt>Epiblasto</dt><dd>La capa de arriba del disco. De ella saldrá absolutamente todo el embrión.</dd>
+      <dt>Hipoblasto</dt><dd>La capa de abajo. No forma al bebé, pero manda señales de orientación.</dd>
+      <dt>Lagunas</dt><dd>Los huecos que se abren en el sincitiotrofoblasto y se llenan de sangre materna.</dd>
+      <dt>hCG</dt><dd>La hormona del embarazo. La fabrica el sincitiotrofoblasto y mantiene vivo al cuerpo lúteo.</dd>
+      <dt>Decidua</dt><dd>El endometrio ya transformado para alojar al embrión. Se expulsa en el parto.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "XprnNB7AbSU", "t": "Segunda semana: disco embrionario bilaminar", "c": "Dr. Franco Kelly", "d": "10:29", "lang": ""}, {"id": "u5UGwSuU7qE", "t": "Segunda semana del desarrollo embrionario", "c": "Dr. Macrófago", "d": "10:19", "lang": ""}]'></div>
+  </div>
+
   <div class="box key">
     <h4>🔑 La semana «de los dos»</h4>
     <ol style="margin-bottom:0">
@@ -1535,6 +1925,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">07</span><h2>Tercera semana · Gastrulación y disco trilaminar</h2></div>
   <p class="unit-sub">Langman, cap. 5 · Ectodermo, mesodermo y endodermo</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>El embrión pasa de <strong>dos capas a tres</strong>. Es el acontecimiento más importante de la tercera semana y se llama gastrulación.</li>
+      <li>Se abre una <strong>ranura</strong> en la capa de arriba (la línea primitiva) y las células empiezan a meterse por ahí, como gente bajando por una escalera.</li>
+      <li>Las <strong>primeras</strong> que bajan echan al hipoblasto y ocupan su lugar: son el <strong>endodermo</strong>. Las <strong>siguientes</strong> se quedan en medio: <strong>mesodermo</strong>. Las que <strong>no se movieron</strong> quedan arriba: <strong>ectodermo</strong>.</li>
+      <li>Fíjate en la consecuencia: <strong>las tres capas salen de una sola</strong>, del epiblasto. Todo tu cuerpo viene de esa capa de arriba.</li>
+      <li><strong>Por dónde entre cada célula decide en qué se convertirá</strong>: las que entran por delante hacen la notocorda, las de los lados hacen músculo y hueso, las de en medio riñón, las de atrás la pared del cuerpo. Es un mapa.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Línea primitiva</dt><dd>La ranura que se abre en el centro del disco y por la que se meten las células.</dd>
+      <dt>Nodo primitivo</dt><dd>El montículo al extremo de esa ranura. Es el centro de mando del embrión.</dd>
+      <dt>Invaginación</dt><dd>Que las células se hundan hacia dentro, como apretar un globo con el dedo.</dd>
+      <dt>Notocorda</dt><dd>El bastón macizo que corre por el centro del embrión y ordena formar la columna y el tubo neural.</dd>
+      <dt>Ectodermo</dt><dd>La capa de arriba: piel y sistema nervioso.</dd>
+      <dt>Mesodermo</dt><dd>La capa de en medio: hueso, músculo, corazón, sangre, riñón.</dd>
+      <dt>Endodermo</dt><dd>La capa de abajo: revestimiento del digestivo y el respiratorio, hígado, páncreas.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "Z-kVT6lCYmg", "t": "Tercera semana: gastrulación y notocorda", "c": "Dr. Franco Kelly", "d": "11:27", "lang": ""}, {"id": "gw_U5zxmd_Y", "t": "Tercera semana: gastrulación y disco trilaminar", "c": "Dr. Macrófago", "d": "11:22", "lang": ""}]'></div>
+  </div>
+
   <p><strong>El evento más relevante de la tercera semana es la gastrulación</strong>, el proceso que establece las tres capas germinales del embrión.</p>
 
   <h3><span class="ico">〰️</span>La línea primitiva</h3>
@@ -1685,6 +2105,37 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section class="unit" id="u8">
   <div class="unit-head"><span class="unit-num">08</span><h2>Ejes corporales y «un tubo sobre otro tubo»</h2></div>
   <p class="unit-sub">Langman, cap. 5 y 7 · Cómo el embrión adquiere orientación y forma de cuerpo</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Antes de construir un cuerpo hay que saber <strong>dónde está arriba y abajo, la cabeza y la cola, la izquierda y la derecha</strong>. Esos son los tres ejes.</li>
+      <li>No los decide nadie desde fuera: los deciden <strong>señales químicas</strong> entre las propias células, y empiezan a fijarse desde el final de la primera semana.</li>
+      <li>La izquierda y la derecha se deciden con una cascada que termina en un gen llamado <strong>PITX2</strong>. Si se expresa del lado equivocado, el corazón acaba al revés (<strong>situs inversus</strong>).</li>
+      <li>Después, el disco plano <strong>se enrolla como un taco</strong>: la capa de arriba forma un tubo (el sistema nervioso) y la de abajo otro tubo (el intestino). De ahí el nombre «un tubo sobre otro tubo».</li>
+      <li>Los bordes laterales se doblan hacia delante y se cierran en la barriga. <strong>Si no cierran bien, el bebé nace con las vísceras fuera</strong> (gastrosquisis, onfalocele, extrofia vesical).</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Eje cráneo-caudal</dt><dd>La línea cabeza-cola. También se le llama anteroposterior.</dd>
+      <dt>Eje dorsoventral</dt><dd>La línea espalda-barriga.</dd>
+      <dt>Lateralidad</dt><dd>Que los órganos sepan si van a la izquierda o a la derecha: corazón, bazo, hígado.</dd>
+      <dt>Situs inversus</dt><dd>Todos los órganos colocados en espejo, como si la persona fuera su propio reflejo.</dd>
+      <dt>Plegamiento</dt><dd>El enrollado del disco plano que convierte una tortilla en un cilindro con tubos dentro.</dd>
+      <dt>Somatopleura</dt><dd>La capa de fuera (mesodermo + ectodermo). Forma la pared del cuerpo.</dd>
+      <dt>Esplacnopleura</dt><dd>La capa de dentro (mesodermo + endodermo). Forma la pared del intestino.</dd>
+      <dt>Gastrosquisis / onfalocele</dt><dd>Dos formas de que las vísceras queden fuera. La diferencia clave: el onfalocele está cubierto por una membrana; la gastrosquisis no.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "1n-_o53CKvY", "t": "Plegamiento del embrión (animación breve)", "c": "Udearroba", "d": "1:46", "lang": ""}, {"id": "XsCOBzqGx5M", "t": "Formación de la cavidad corporal (según Langman)", "c": "Mary Serrano", "d": "3:36", "lang": ""}, {"id": "7O4FECyQJdQ", "t": "Plegamiento del embrión (clase completa)", "c": "Norberto López Serna", "d": "23:33", "lang": ""}]'></div>
+  </div>
 
   <h3><span class="ico">🧭</span>Los tres ejes corporales</h3>
   <p>El establecimiento de los ejes <strong>anteroposterior (A-P o cráneo-caudal)</strong>, <strong>dorsoventral (D-V)</strong> e <strong>izquierda-derecha (I-D)</strong> ocurre en fase temprana de la embriogénesis y quizá inicie en fases tardías de la mórula o el blastocisto: <strong>los ejes A-P y D-V antes que el I-D</strong>.</p>
@@ -1841,6 +2292,36 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section class="unit" id="u9">
   <div class="unit-head"><span class="unit-num">09</span><h2>De la 3.ª a la 8.ª semana · Derivados del ectodermo</h2></div>
   <p class="unit-sub">Langman, cap. 6 · Periodo embrionario u organogénesis</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>De la <strong>semana 3 a la 8</strong> se forman todos los órganos. Es también el periodo en que el embrión es <strong>más vulnerable</strong> a alcohol, fármacos e infecciones.</li>
+      <li>El ectodermo, la capa de arriba, hace dos cosas: <strong>la piel</strong> y <strong>todo el sistema nervioso</strong>.</li>
+      <li>La notocorda le ordena al ectodermo de encima que se engrose, y nace la <strong>placa neural</strong>.</li>
+      <li>Esa placa <strong>se dobla como un taco y se cierra formando un tubo</strong>: el futuro cerebro y la médula. Si no cierra arriba hay <strong>anencefalia</strong>; si no cierra abajo, <strong>espina bífida</strong>. El ácido fólico previene la mitad de esos casos.</li>
+      <li>De los bordes de ese tubo se escapan unas <strong>células viajeras</strong> (la cresta neural) que recorren todo el cuerpo y forman media cara, los ganglios nerviosos, los melanocitos y hasta un tabique del corazón.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Neurulación</dt><dd>Todo el proceso de convertir la placa neural en un tubo cerrado.</dd>
+      <dt>Placa neural</dt><dd>El engrosamiento del ectodermo del que saldrá el sistema nervioso.</dd>
+      <dt>Pliegues y surco neural</dt><dd>Los bordes levantados de la placa y el canal que queda entre ellos.</dd>
+      <dt>Neuroporo</dt><dd>Cada uno de los dos agujeros que quedan en los extremos del tubo antes de cerrarse del todo.</dd>
+      <dt>Cresta neural</dt><dd>Las células que se desprenden del borde del tubo y migran por todo el cuerpo.</dd>
+      <dt>Placoda</dt><dd>Un engrosamiento del ectodermo que se hunde y forma un órgano de los sentidos: oído, cristalino.</dd>
+      <dt>DTN</dt><dd>Defecto del tubo neural: anencefalia o espina bífida, según dónde no cerró.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "ZLnlYP7rZXs", "t": "Neurulación explicada", "c": "Anita te explica", "d": "14:58", "lang": ""}, {"id": "aEAIdZxgXxs", "t": "Neurulación: animación 3D", "c": "About Medicine", "d": "3:24", "lang": "en inglés · se entiende sin audio"}, {"id": "rc7_E39RBtU", "t": "Desarrollo de la cresta neural", "c": "UVa_Online", "d": "6:15", "lang": ""}]'></div>
+  </div>
 
   <div class="box key">
     <h4>🔑 El periodo embrionario</h4>
@@ -2039,6 +2520,38 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section class="unit" id="u10">
   <div class="unit-head"><span class="unit-num">10</span><h2>De la 3.ª a la 8.ª semana · Derivados del mesodermo y del endodermo</h2></div>
   <p class="unit-sub">Langman, cap. 6 · Somitas, cavidad corporal, sangre, tubo intestinal y genes HOX</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>El mesodermo se ordena en <strong>tres franjas</strong> a cada lado del eje: la pegada al centro, la de en medio y la de fuera.</li>
+      <li>La franja pegada al centro se parte en <strong>bloques llamados somitas</strong>, uno por vértebra, a razón de <strong>3 pares por día</strong>. Se pueden contar para saber la edad del embrión.</li>
+      <li>Cada somita se reparte en tres destinos: <strong>hueso</strong> (esclerotoma), <strong>músculo</strong> (miotoma) y <strong>piel de la espalda</strong> (dermatoma). Y cada uno <strong>se lleva su nervio</strong> a donde migre: por eso existen los dermatomas que ves en neurología.</li>
+      <li>La franja de en medio hace <strong>riñones y gónadas</strong>. La de fuera hace la <strong>pared del cuerpo</strong> y las cavidades donde van los órganos.</li>
+      <li>Mientras tanto el endodermo se enrolla en un <strong>tubo</strong>, el digestivo, y de sus paredes brotan como yemas el <strong>hígado, el páncreas, los pulmones y la tiroides</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Somita</dt><dd>Cada bloque de mesodermo a los lados del tubo neural. Da una vértebra, su músculo y su piel.</dd>
+      <dt>Esclerotoma</dt><dd>La parte del somita que forma la vértebra y las costillas.</dd>
+      <dt>Miotoma</dt><dd>La parte que forma el músculo.</dd>
+      <dt>Dermatoma</dt><dd>La parte que forma la piel de la espalda. También, la franja de piel que inerva un nervio.</dd>
+      <dt>Mesodermo intermedio</dt><dd>La franja del medio: riñones y gónadas.</dd>
+      <dt>Placa lateral</dt><dd>La franja de fuera: pared del cuerpo, cavidades y envoltura de los órganos.</dd>
+      <dt>Vasculogénesis</dt><dd>Formar vasos desde cero, a partir de islotes de células.</dd>
+      <dt>Angiogénesis</dt><dd>Formar vasos nuevos brotando de vasos que ya existían.</dd>
+      <dt>Genes HOX</dt><dd>La lista numerada que le dice al embrión qué va en la cabeza, qué en el tórax y qué en la cola.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "692FPm9YNgs", "t": "Periodo embrionario: de la 3.ª a la 8.ª semana", "c": "Dr. Franco Kelly", "d": "26:42", "lang": ""}, {"id": "N_IRV5bIXf0", "t": "Somitas y extremidades", "c": "Sergio Díaz", "d": "6:29", "lang": ""}, {"id": "lBT6vXw6LQI", "t": "Derivados de las tres capas (resumen visual)", "c": "HDM World", "d": "2:01", "lang": ""}]'></div>
+  </div>
 
   <h3><span class="ico">🧱</span>Organización del mesodermo</h3>
   <p>Al inicio, la capa mesodérmica es una lámina delgada de tejido laxo a cada lado de la línea media. <strong>Cerca del día 17</strong> las células próximas a la línea media proliferan y forman una placa engrosada: el <em class="term">mesodermo paraxial</em>. Lateralmente, la capa se conserva delgada: la <strong>placa lateral</strong>, que al aparecer y confluir cavidades intercelulares se divide en:</p>
@@ -2283,6 +2796,37 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   <div class="unit-head"><span class="unit-num">11</span><h2>Membranas serosas y formación del diafragma</h2></div>
   <p class="unit-sub">Langman, cap. 7 · Cavidades corporales, mesenterios y tabicación</p>
 
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>Cada órgano del tronco está envuelto en una <strong>bolsa doble</strong>. La imagen exacta del libro: es como hundir un dedo en un globo inflado.</li>
+      <li>Esa bolsa sale del mesodermo: la hoja de fuera <strong>tapiza la pared</strong> del cuerpo y la de dentro <strong>envuelve el órgano</strong>. Entre las dos queda la cavidad.</li>
+      <li>Donde las dos hojas se juntan y se pegan queda el <strong>mesenterio</strong>: la doble cortina por la que entran vasos y nervios al intestino.</li>
+      <li>El <strong>diafragma se arma con cuatro piezas</strong> que se sueldan, y empieza a formarse <strong>en el cuello</strong>, no en el tórax.</li>
+      <li>Por eso su nervio viene de <strong>C3, C4 y C5</strong> («C3, C4 y C5 mantienen el diafragma vivo»). Y si una de las piezas no cierra, el estómago se sube al tórax y aplasta el pulmón.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Serosa</dt><dd>La membrana lisa y húmeda que tapiza una cavidad y envuelve los órganos, para que se deslicen sin rozar.</dd>
+      <dt>Hoja parietal</dt><dd>La que tapiza la pared («pariete» = pared).</dd>
+      <dt>Hoja visceral</dt><dd>La que envuelve el órgano («víscera» = órgano).</dd>
+      <dt>Mesenterio</dt><dd>La doble cortina de peritoneo que cuelga el intestino y le lleva vasos y nervios.</dd>
+      <dt>Tabique transverso</dt><dd>La placa gruesa de tejido que hace de suelo provisional entre tórax y abdomen.</dd>
+      <dt>Membranas pleuroperitoneales</dt><dd>Las dos repisas que acaban de cerrar ese suelo y forman el tendón central del diafragma.</dd>
+      <dt>Nervio frénico</dt><dd>El nervio del diafragma. Nace en C3-C5 y hace un viaje larguísimo hasta el tórax.</dd>
+      <dt>Hernia diafragmática</dt><dd>Un agujero en el diafragma por el que suben las vísceras al tórax. El 85-90% es del lado izquierdo.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "ftg-8FALVq8", "t": "Cavidades corporales y diafragma", "c": "Dr. Franco Kelly", "d": "14:43", "lang": ""}, {"id": "eoMQLFhjao4", "t": "Formación del diafragma", "c": "Gaby Rodríguez", "d": "4:33", "lang": ""}, {"id": "t-N41x5-rTU", "t": "El tubo intestinal y las cavidades corporales", "c": "Dr. Cristopher Fuentes", "d": "16:15", "lang": ""}]'></div>
+  </div>
+
   <h3><span class="ico">🎈</span>Membranas serosas</h3>
   <p>Algunas células de la <strong>capa parietal</strong> del mesodermo de la placa lateral que cubre la pared corporal adquieren <strong>características mesoteliales</strong> y dan origen a la <strong>hoja parietal</strong> de las membranas serosas, que recubren las paredes de las cavidades <strong>peritoneal, pleural y pericárdica</strong>.</p>
   <p>Del mismo modo, algunas células de la <strong>capa visceral</strong> forman la <strong>hoja visceral</strong>, que cubre los órganos abdominales, los pulmones y el corazón.</p>
@@ -2406,6 +2950,37 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
 <section class="unit" id="u12">
   <div class="unit-head"><span class="unit-num">12</span><h2>Del tercer mes al nacimiento · El feto y la placenta</h2></div>
   <p class="unit-sub">Langman, cap. 8 · Periodo fetal, membranas fetales, placenta y parto</p>
+
+  <div class="simple">
+    <h4>📌 La unidad en 5 frases</h4>
+    <ol>
+      <li>A partir de la <strong>semana 9</strong> ya no se crean órganos nuevos: los que hay solo <strong>crecen y maduran</strong>. Eso es el periodo fetal.</li>
+      <li>El feto primero <strong>se alarga</strong> (meses 3, 4 y 5) y al final <strong>engorda</strong> (últimos 2 meses). La cabeza pasa de ser la mitad del cuerpo a ser un cuarto.</li>
+      <li>La placenta tiene <strong>dos mitades</strong>: una la pone el bebé (corion frondoso) y otra la madre (decidua basal).</li>
+      <li>La sangre de la madre <strong>baña por fuera</strong> las vellosidades del bebé, pero <strong>las dos sangres nunca se mezclan</strong>: solo intercambian oxígeno y nutrientes a través de una pared finísima.</li>
+      <li>La placenta además es una <strong>glándula</strong>: fabrica hCG, progesterona, estrógenos y una hormona que le da al feto prioridad sobre el azúcar de la madre.</li>
+    </ol>
+  </div>
+
+  <div class="words">
+    <h4>🔤 Palabras nuevas de esta unidad</h4>
+    <dl>
+      <dt>Periodo fetal</dt><dd>De la semana 9 al nacimiento. Crecimiento y maduración, no formación de órganos.</dd>
+      <dt>LCC</dt><dd>Longitud cefalocaudal: se mide de la coronilla a las nalgas, como midiendo «sentado».</dd>
+      <dt>Corion frondoso</dt><dd>La parte del corion con vellosidades que sí forma placenta. Su opuesto es el corion leve, que es liso.</dd>
+      <dt>Decidua basal</dt><dd>La parte del endometrio que queda bajo la placenta y forma su mitad materna.</dd>
+      <dt>Cotiledón</dt><dd>Cada gajo en que los tabiques dividen la placenta. Se ven a simple vista tras el parto: hay 15 a 20.</dd>
+      <dt>Vellosidad</dt><dd>Cada uno de los «deditos» del bebé que se bañan en la sangre materna para intercambiar.</dd>
+      <dt>Barrera placentaria</dt><dd>La pared que separa ambas sangres. El libro avisa: no es una barrera de verdad, muchas cosas la cruzan.</dd>
+      <dt>Vérnix caseosa</dt><dd>La capa grasa blanquecina que cubre la piel del feto al final del embarazo.</dd>
+    </dl>
+  </div>
+
+  <div class="vids">
+    <h4>▶️ Videos para esta unidad</h4>
+    <div class="vid-grid"
+      data-videos='[{"id": "TgZWjvSTw7I", "t": "Periodo fetal: de la semana 9 al nacimiento", "c": "Dr. Franco Kelly", "d": "15:44", "lang": ""}, {"id": "sXKkHu6krw4", "t": "La placenta: funciones, barrera y circulación", "c": "Tu compañero", "d": "12:35", "lang": ""}, {"id": "3oGCJs4S0Iw", "t": "Del tercer mes al nacimiento: el feto y la placenta", "c": "Dr. Cristopher Fuentes", "d": "38:45", "lang": ""}]'></div>
+  </div>
 
   <h3><span class="ico">📈</span>Desarrollo del feto</h3>
   <p>El <strong>periodo fetal</strong> va del inicio de la novena semana al nacimiento y se caracteriza por la <strong>maduración de tejidos y órganos</strong> y el <strong>crecimiento rápido del cuerpo</strong>. Se miden dos longitudes:</p>
@@ -2773,6 +3348,180 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
     {"t":"Pretérmino","q":"¿Qué frecuencia e importancia tiene el nacimiento pretérmino?","a":"Ocurre en cerca del 12% de los nacimientos en Estados Unidos y es la causa principal de mortalidad infantil. Factores de riesgo: parto pretérmino previo, raza negra, gestaciones múltiples, infecciones periodontales y vaginosis bacteriana, e IMC materno bajo."}
     ]'></div>
 </section>
+<script>
+/* Diccionario en lenguaje llano. Clave = término tal como aparece marcado en el texto. */
+window.EMB_DICT = {
+
+/* ---------- BASES DE GENÉTICA (para el primer contacto) ---------- */
+"célula": "La unidad más pequeña de tu cuerpo que está viva por sí sola. Tienes unos 30 billones.",
+"núcleo": "La «caja fuerte» dentro de la célula donde se guarda el ADN.",
+"adn": "El manual de instrucciones de tu cuerpo, escrito en un código químico de 4 letras (A, T, G, C).",
+"gen": "Un capítulo del manual: el trozo de ADN con la receta de UNA proteína.",
+"cromosoma": "El ADN muy enrollado y empaquetado, como un cable de audífonos hecho bola. Tienes 46.",
+"proteína": "La pieza que hace el trabajo real en la célula: forma estructuras, acelera reacciones, transporta cosas. Las neuronas, los músculos y las hormonas están hechos de proteínas.",
+"arn": "Una fotocopia de un gen. Sale del núcleo y lleva la receta a donde se fabrica la proteína.",
+"transcripción": "Copiar un gen de ADN a ARN. Como fotocopiar una página del manual para no sacar el original de la caja fuerte.",
+"traducción": "Leer esa fotocopia (ARN) y construir la proteína que dice la receta.",
+"expresión génica": "Que un gen esté «encendido»: se está copiando y se está fabricando su proteína. La mayoría de tus genes están apagados en cada célula.",
+"diploide": "Tener los cromosomas por pares: 46 en total (23 del padre + 23 de la madre). Así son casi todas tus células.",
+"haploide": "Tener solo la mitad: 23 cromosomas sueltos, sin pareja. Así son el óvulo y el espermatozoide.",
+"gameto": "La célula sexual: óvulo en la mujer, espermatozoide en el hombre. Es haploide.",
+"cigoto": "La primera célula del nuevo individuo, recién formada al unirse óvulo y espermatozoide.",
+"embrión": "El nuevo ser desde la fecundación hasta la semana 8.",
+"feto": "El mismo ser a partir de la semana 9 y hasta que nace.",
+"epitelio": "Células muy pegadas entre sí que forman láminas o tubos, como el papel tapiz que recubre superficies.",
+"mesénquima": "Células sueltas y dispersas, con aspecto de araña, nadando en un gel. Lo contrario del epitelio.",
+"morula": "El embrión de unos 3 días, una bolita compacta de 16 células. Su nombre viene de «mora», porque parece una.",
+"cariotipo": "La foto ordenada de los 46 cromosomas de una persona. Sirve para ver si falta o sobra alguno.",
+"alelo": "Cada una de las dos versiones que tienes de un mismo gen: una la heredaste de tu madre y otra de tu padre.",
+"mutación": "Un error en el texto del ADN, como una errata en el manual.",
+"ligando": "La molécula que lleva el mensaje. Es la llave.",
+"receptor": "La proteína que recibe el mensaje. Es la cerradura.",
+
+/* ---------- UNIDAD 1: MEIOSIS ---------- */
+"meiosis": "La división especial que hacen solo las células que van a ser óvulos o espermatozoides. Parte la información a la mitad: de 46 cromosomas a 23.",
+"mitosis": "La división normal: una célula se parte en dos idénticas, ambas con los 46 cromosomas. Es como fotocopiar.",
+"genes ligados": "Genes que viajan juntos porque están en el mismo cromosoma, así que se heredan en paquete.",
+"cromátidas hermanas": "Las dos copias idénticas de un cromosoma después de duplicarse, todavía pegadas por la cintura.",
+"centrómero": "La «cintura» estrecha que mantiene unidas a las dos cromátidas hermanas.",
+"huso mitótico": "La red de cables (microtúbulos) que jala los cromosomas hacia los polos de la célula cuando se divide.",
+"entrecruzamientos": "El intercambio de trozos entre los dos cromosomas de un par. Por eso no eres idéntico a tus hermanos.",
+"quiasma": "El punto en forma de X donde dos cromosomas quedan enganchados mientras se intercambian trozos.",
+"cuerpos polares": "Las 3 células de desecho que sobran al formarse un óvulo. Se llevan cromosomas pero casi nada de citoplasma, y mueren.",
+"no disyunción": "Cuando dos cromosomas que debían separarse se van juntos a la misma célula. Resultado: un gameto con 24 y otro con 22 en vez de 23.",
+"síndrome de cri du chat": "Falta un trozo del brazo corto del cromosoma 5. El bebé llora con un sonido parecido al maullido de un gato.",
+"síndrome de Angelman": "Falta un trocito del cromosoma 15 que venía de la MADRE. Hay discapacidad intelectual, no habla y episodios largos de risa.",
+"síndrome de Prader-Willi": "Falta ese mismo trocito del cromosoma 15, pero el que venía del PADRE. Hay hipotonía, obesidad e hipogonadismo.",
+"síndrome de X frágil": "Una zona del cromosoma X se repite más de 200 veces y se vuelve quebradiza. Segunda causa genética de discapacidad intelectual, solo en varones.",
+
+/* ---------- UNIDAD 2: GAMETOGÉNESIS ---------- */
+"gametogénesis": "Todo el proceso de convertir una célula común en un óvulo o un espermatozoide maduro.",
+"células germinales primordiales (CGP)": "Las células «abuelas» de los óvulos y espermatozoides. Nacen fuera del embrión y tienen que caminar hasta el ovario o el testículo.",
+"ovogénesis": "La fabricación de óvulos. Empieza antes de que la niña nazca y puede tardar 40 años en terminar uno.",
+"espermatogénesis": "La fabricación de espermatozoides. Empieza en la pubertad y cada uno tarda 74 días.",
+"ovogonias": "Las células que se dividen una y otra vez en el ovario del feto femenino, antes de convertirse en ovocitos.",
+"ovocitos primarios": "El óvulo a medio hacer, congelado a mitad de la meiosis. Se queda así desde antes de nacer hasta la ovulación.",
+"ovocito secundario": "El óvulo que ya terminó la primera división y expulsó el primer cuerpo polar. Es el que se ovula.",
+"diploteno": "La «pausa» en la que se queda congelado el ovocito durante años, a mitad de la profase de la meiosis I.",
+"células foliculares": "Las células que rodean y cuidan al ovocito dentro del ovario, como una escolta.",
+"folículo primordial": "Un ovocito dormido rodeado por una sola capa de células planas. Es la forma de reposo.",
+"células de la granulosa": "Las células foliculares cuando ya crecieron y se pusieron en varias capas. Fabrican estrógenos y alimentan al ovocito.",
+"teca folicular": "La capa de tejido del ovario que envuelve al folículo por fuera. Su parte interna fabrica las hormonas base de los estrógenos.",
+"antro": "La cavidad llena de líquido que se forma dentro del folículo conforme madura.",
+"cúmulo oóforo": "El montoncito de células de la granulosa sobre el que queda sentado el ovocito dentro del folículo.",
+"primer cuerpo polar": "La primera célula de desecho que expulsa el ovocito al terminar la meiosis I.",
+"espermatogonias tipo A": "Las células madre del testículo que se dividen para mantener la reserva. El punto de partida de todo.",
+"espermatogonias tipo B": "Las hijas de las tipo A, que ya están comprometidas a convertirse en espermatozoides.",
+"espermatocitos primarios": "Los espermatozoides a medio hacer, que van a entrar a la meiosis.",
+"células sustentaculares o de Sertoli": "Las «niñeras» del testículo: sostienen, protegen y alimentan a los espermatozoides en formación.",
+
+/* ---------- UNIDAD 3: SEÑALIZACIÓN MOLECULAR ---------- */
+"cromatina": "El ADN mezclado con proteínas, que es como realmente está guardado dentro del núcleo.",
+"nucleosoma": "La unidad básica de ese empaque: un carrete de 8 proteínas con el ADN enrollado encima, como hilo en un carrete.",
+"factores de transcripción": "Proteínas que deciden qué genes se encienden y cuáles no. Son los interruptores de la célula.",
+"potenciadores": "Trozos de ADN que suben el volumen de un gen. Pueden estar lejísimos de él y aun así controlarlo.",
+"silenciadores": "Lo mismo que un potenciador, pero bajan el volumen: apagan el gen.",
+"ARN nuclear (ARNn)": "La primera fotocopia del gen, todavía con la basura (intrones) sin recortar.",
+"espliceosomas": "Las «tijeras» moleculares que recortan los trozos sobrantes del ARN.",
+"empalme alternativo": "Recortar el mismo ARN de distintas formas para sacar varias proteínas diferentes de un solo gen.",
+"isoformas de empalme": "Las distintas proteínas que salen de un mismo gen según cómo se recortó su ARN.",
+"inducción": "Cuando un grupo de células le da una orden a otro grupo y le cambia el destino. «Tú vas a ser ojo.»",
+"competencia": "La capacidad del grupo que recibe la orden de poder obedecerla. Sin competencia, la orden se pierde.",
+"interacciones epitelio-mesénquima": "La conversación entre una lámina de células pegadas y las células sueltas de abajo. Así se forman casi todos los órganos.",
+"integrinas": "Ganchos en la superficie de la célula que la sujetan al suelo (la matriz) y le permiten arrastrarse.",
+"morfógeno": "Una sustancia que se reparte formando un degradado, como perfume. Las células saben dónde están según cuánto les llega.",
+"extensión convergente": "Cuando un tejido se estrecha y se alarga porque sus células se meten unas entre otras, como gente apretándose en una fila.",
+
+/* ---------- UNIDAD 4: FECUNDACIÓN ---------- */
+"cuerpo o folículo atrésico": "Lo que queda de un folículo que se murió sin llegar a ovular: una cicatriz.",
+"luteinización": "La transformación de las células del folículo roto en la fábrica de progesterona (el cuerpo lúteo).",
+"células luteínicas": "Las células amarillentas del cuerpo lúteo, que fabrican progesterona tras la ovulación.",
+"luteólisis": "La muerte del cuerpo lúteo cuando no hubo embarazo. Al caer la progesterona, viene la regla.",
+"estigma": "El puntito sin vasos que se forma en la superficie del ovario, justo por donde va a salir el óvulo.",
+"corona radiada": "La capa de células que sale pegada al óvulo cuando se ovula, como un abrigo.",
+"zona pelúcida": "La cáscara de gel que rodea al óvulo. El espermatozoide tiene que atravesarla.",
+"reacción de zona": "El endurecimiento de esa cáscara justo después de que entró UN espermatozoide, para que no entre ningún otro.",
+"pronúcleo femenino": "El paquete de 23 cromosomas del óvulo, esperando dentro del cigoto.",
+"pronúcleo masculino": "El paquete de 23 cromosomas del espermatozoide, hinchado y esperando al lado del femenino.",
+
+/* ---------- UNIDAD 5: SEGMENTACIÓN ---------- */
+"blastómeras": "Las células del embrión en sus primeros días. Cada división las hace más pequeñas, porque el embrión no crece: solo se parte.",
+"compactación": "El momento en que las blastómeras se aprietan entre sí y dejan de verse como bolitas sueltas.",
+"mórula de 16 células": "El embrión del día 3, una bolita compacta que parece una mora.",
+"blastocele": "La cavidad llena de líquido que aparece dentro del embrión y lo convierte en blastocisto.",
+"embrioblasto": "El grupito de células del que saldrá el bebé. Todo lo demás será placenta.",
+"trofoblasto": "La capa externa del blastocisto. No forma al bebé: forma la placenta y excava el útero.",
+"L-selectina": "El «velcro» que usa el embrión para engancharse por primera vez a la pared del útero.",
+"epiblasto": "La capa de arriba del disco embrionario. De ella sale TODO el embrión.",
+"hipoblasto": "La capa de abajo del disco. No forma al bebé, pero manda las señales que dicen dónde está la cabeza.",
+"endodermo visceral anterior (EVA)": "Un grupito de células del hipoblasto que se va a un extremo y grita «aquí va la cabeza».",
+"reacción decidual": "El cambio del endometrio para recibir al embrión: sus células se hinchan y se llenan de azúcar y grasa, como preparando la despensa.",
+
+/* ---------- UNIDAD 6: SEGUNDA SEMANA ---------- */
+"etapa lacunar": "Cuando aparecen huecos (lagunas) dentro del trofoblasto, que luego se llenarán de sangre materna.",
+"amnioblastos": "Las células del epiblasto que se van al techo y tapizan la cavidad amniótica: son las que forran la «alberca» donde flotará el bebé.",
+"membrana exocelómica (de Heuser)": "La membrana finita que forra por dentro al blastocisto y delimita el primer saco vitelino.",
+"sinusoides": "Los capilares de la madre, hinchados y llenos de sangre, que el embrión rompe para alimentarse.",
+"mesodermo extraembrionario": "Tejido de relleno que se forma FUERA del embrión propiamente dicho y sostiene sus membranas.",
+"pedículo de fijación": "El puente de tejido que une el embrión con su cáscara. Se convertirá en el cordón umbilical.",
+"placa coriónica": "La «tapa» de tejido del lado fetal de la placenta, de donde salen las vellosidades.",
+"saco vitelino secundario o definitivo": "El segundo saco vitelino, más pequeño, que sustituye al primero.",
+"vellosidades primarias": "Los primeros deditos de trofoblasto que se meten en el útero. Todavía sin vasos por dentro.",
+"placenta previa": "Cuando la placenta se implanta tan abajo que tapa la salida del útero. Provoca hemorragias graves en el parto.",
+
+/* ---------- UNIDAD 7: GASTRULACIÓN ---------- */
+"línea (estría) primitiva": "La ranura que se abre en el centro del disco embrionario y por la que se meten las células para formar las tres capas.",
+"nodo primitivo": "El montículo del extremo de esa ranura. Es el centro de mando del embrión.",
+"fosita primitiva": "El hoyito que hay en medio del nodo primitivo.",
+"invaginación": "Que unas células se hundan hacia dentro, como cuando aprietas un globo con el dedo.",
+"placa precordal": "Un grupo de células mesodérmicas por delante de la notocorda. Ayuda a inducir el cerebro anterior.",
+"membrana orofaríngea": "El «tapón» de dos capas en el extremo de la cabeza donde se abrirá la boca. Se rompe en la semana 4.",
+"membrana cloacal": "El tapón equivalente en el extremo de la cola, donde se abrirá el ano. Se rompe en la semana 7.",
+"divertículo alantoentérico o alantoides": "Un pequeño dedo que sale del saco vitelino hacia el cordón. En el humano casi no sirve, pero se relaciona con la vejiga.",
+"placa notocordal": "El paso intermedio: las células de la futura notocorda todavía incrustadas en el endodermo.",
+"notocorda definitiva": "El bastón macizo que corre por el centro del embrión. Es el eje y el que ordena formar la columna y el tubo neural.",
+"conducto neuroentérico": "Un pasadizo temporal que comunica la cavidad amniótica con el saco vitelino.",
+"mesodermo paraxial": "El mesodermo pegado al eje central. Se parte en bloques (somitas) que darán huesos y músculos.",
+"mesodermo intermedio": "La franja de mesodermo del medio. De ahí salen los riñones y las gónadas.",
+"cápsula citotrofoblástica externa": "La cubierta que envuelve todo el trofoblasto y ancla el saco del embrión a la pared del útero.",
+
+/* ---------- UNIDAD 8: EJES Y PLEGAMIENTO ---------- */
+"cavidad corporal primitiva": "El primer hueco interno del embrión, que luego se dividirá en las cavidades del corazón, los pulmones y el abdomen.",
+"somatopleura": "La capa de fuera: mesodermo parietal + ectodermo. Forma la pared del cuerpo.",
+"esplacnopleura": "La capa de dentro: mesodermo visceral + endodermo. Forma la pared del intestino.",
+"conducto vitelino": "El tubito que todavía conecta el intestino con el saco vitelino. Se estrecha y desaparece hacia el mes 2-3.",
+
+/* ---------- UNIDAD 9: ECTODERMO ---------- */
+"placa neural": "El engrosamiento del ectodermo del que saldrá todo el sistema nervioso.",
+"pliegues neurales": "Los bordes de esa placa cuando se levantan, como los bordes de una tortilla que se dobla.",
+"surco neural": "El canal que queda en medio entre los dos pliegues levantados.",
+"neuroporos anterior (craneal) y posterior (caudal)": "Los dos agujeros que quedan en los extremos del tubo neural antes de cerrarse del todo. Si no cierran, hay anencefalia o espina bífida.",
+"células de la cresta neural (CCN)": "Células que se desprenden del borde del tubo neural y viajan por todo el cuerpo. Forman tantas cosas que se les llama la cuarta capa germinal.",
+
+/* ---------- UNIDAD 10: MESODERMO Y ENDODERMO ---------- */
+"somitómeros": "Los primeros bloques poco definidos del mesodermo paraxial, antes de volverse somitas.",
+"somitas": "Los bloques ordenados de mesodermo a los lados del tubo neural. Cada uno dará una vértebra, sus músculos y su piel.",
+"esclerotoma": "La parte del somita que forma la vértebra y las costillas.",
+"dermatoma": "La parte del somita que forma la piel de la espalda. También, la zona de piel que inerva un nervio.",
+"dermomiotoma": "La parte del somita que queda tras irse el esclerotoma: dará músculo y dermis.",
+"genes de homeosecuencia": "Los genes HOX: la lista numerada que le dice al embrión qué va en la cabeza, qué en el tórax y qué en la cola. Están ordenados en el cromosoma en el mismo orden que en el cuerpo.",
+
+/* ---------- UNIDAD 11: SEROSAS Y DIAFRAGMA ---------- */
+"mesenterio dorsal": "La doble hoja de peritoneo que cuelga el intestino de la pared de atrás y por la que le llegan vasos y nervios.",
+"conductos pericardioperitoneales": "Los dos pasadizos que aún comunican el tórax con el abdomen antes de que se cierre el diafragma.",
+"membranas pleuropericárdicas": "Las láminas que separan el corazón de los pulmones. Se convierten en el pericardio fibroso.",
+"pliegues pleuroperitoneales": "Las primeras repisas en forma de media luna que empiezan a cerrar el hueco entre tórax y abdomen.",
+"membranas pleuroperitoneales": "Esas repisas ya adelgazadas y extendidas. Forman el tendón central del diafragma.",
+
+/* ---------- UNIDAD 12: FETO Y PLACENTA ---------- */
+"nudos sincitiales": "Pedacitos de la capa superficial de la placenta que se desprenden y pasan a la sangre de la madre. Es normal.",
+"tabiques deciduales": "Los tabiques que la madre levanta dentro de la placenta y la dividen en gajos.",
+"cotiledones": "Cada uno de esos gajos de la placenta. Se ven a simple vista al revisarla tras el parto: hay 15 a 20.",
+"hemocorial": "El tipo de placenta humana: la sangre de la madre toca directamente el tejido del bebé, sin vasos maternos de por medio. Pero las sangres NO se mezclan.",
+"anillo umbilical primitivo": "El agujero por donde pasan, al principio, todas las estructuras que entran y salen del embrión.",
+"gelatina de Wharton": "El relleno gelatinoso del cordón umbilical que protege los vasos para que no se doblen ni se aplasten."
+};
+</script>
 <section class="unit" id="flashcards">
   <div class="unit-head"><span class="unit-num">★</span><h2>Flashcards globales</h2></div>
   <p class="unit-sub">Todas las tarjetas de las 12 unidades, barajadas · repaso de cierre</p>
@@ -3020,46 +3769,29 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   </div>
 </section>
 
-<section class="unit" id="glosario">
-  <div class="unit-head"><span class="unit-num">§</span><h2>Glosario rápido</h2></div>
-  <p class="unit-sub">Términos que se repiten a lo largo de la guía</p>
+<section class="unit" id="videos">
+  <div class="unit-head"><span class="unit-num">▶</span><h2>Todos los videos</h2></div>
+  <p class="unit-sub">Los 30 videos de la guía reunidos · todos verificados y en español salvo donde se indica</p>
 
-  <div class="tablewrap">
-  <table>
-    <thead><tr><th>Término</th><th>Definición</th></tr></thead>
-    <tbody>
-      <tr><td class="hi">Amnioblastos</td><td>Células del epiblasto adyacentes al citotrofoblasto que revisten la cavidad amniótica.</td></tr>
-      <tr><td class="hi">Blastómeras</td><td>Células producidas por la segmentación, cada vez más pequeñas con cada división.</td></tr>
-      <tr><td class="hi">Capacitación</td><td>Acondicionamiento del espermatozoide (≈7 h) en el aparato reproductor femenino, que retira glucoproteínas y proteínas del plasma seminal de la región acrosómica.</td></tr>
-      <tr><td class="hi">Competencia</td><td>Capacidad del tejido respondedor de reaccionar a una señal inductora; requiere un factor de competencia.</td></tr>
-      <tr><td class="hi">Corion frondoso</td><td>Porción del corion, en el polo embrionario, cuyas vellosidades crecen; con la decidua basal forma la placenta. Su opuesto es el corion leve.</td></tr>
-      <tr><td class="hi">Cuerpo polar</td><td>Célula hija de la meiosis femenina que recibe citoplasma escaso y se degenera.</td></tr>
-      <tr><td class="hi">Decidua</td><td>Capa funcional del endometrio que se expulsa durante el parto. Basal (bajo el corion frondoso), capsular (sobre el polo abembrionario) y parietal (resto de la pared uterina).</td></tr>
-      <tr><td class="hi">Dermomiotoma</td><td>Porción del somita formada por dermatoma y precursores musculares; origina la dermis de la espalda y músculos de espalda, pared corporal y algunas extremidades.</td></tr>
-      <tr><td class="hi">Espliceosoma</td><td>Complejo de ARN nuclear pequeño y proteínas que reconoce sitios de empalme y genera isoformas de empalme.</td></tr>
-      <tr><td class="hi">Esplacnopleura</td><td>Capa visceral del mesodermo de la placa lateral más el endodermo subyacente. Su contraparte es la somatopleura (parietal + ectodermo).</td></tr>
-      <tr><td class="hi">EVA</td><td>Endodermo visceral anterior; células del hipoblasto que migran al futuro extremo craneal y secretan cerberus y lefty1 para inhibir nodal.</td></tr>
-      <tr><td class="hi">Extensión convergente</td><td>Proceso por el que un tejido se elonga y estrecha al intercalarse sus células; regulado por la vía PCP.</td></tr>
-      <tr><td class="hi">Gelatina de Wharton</td><td>Tejido rico en proteoglucanos que rodea y protege los vasos umbilicales.</td></tr>
-      <tr><td class="hi">Hemangioblasto</td><td>Precursor común de vasos sanguíneos y células hemáticas, inducido por FGF2.</td></tr>
-      <tr><td class="hi">Hemocorial</td><td>Tipo de placenta, como la humana, en que la sangre materna está separada de la fetal por un derivado coriónico.</td></tr>
-      <tr><td class="hi">Impronta genómica</td><td>Expresión diferencial de un gen según proceda del padre o de la madre; se establece por metilación durante la gametogénesis.</td></tr>
-      <tr><td class="hi">Inducción</td><td>Proceso por el cual un grupo de células (inductor) hace que otro (respondedor) cambie su destino.</td></tr>
-      <tr><td class="hi">Integrinas</td><td>Receptores que unen moléculas de la matriz extracelular con el citoesqueleto; permiten la migración y regulan la diferenciación.</td></tr>
-      <tr><td class="hi">Membrana amniocoriónica</td><td>Fusión de amnios y corion que oblitera la cavidad coriónica; es la que se rompe en el trabajo de parto.</td></tr>
-      <tr><td class="hi">Mesénquima</td><td>Tejido conectivo embrionario de organización laxa, independientemente de su origen (a diferencia del mesodermo, definido por su procedencia del epiblasto).</td></tr>
-      <tr><td class="hi">Morfógeno</td><td>Molécula secretada que establece gradientes de concentración e instruye a las células sobre su destino; el ejemplo maestro es SHH.</td></tr>
-      <tr><td class="hi">Nudos sincitiales</td><td>Trozos multinucleados de sincitio que se desprenden a las lagunas intervellosas y pasan a la circulación materna.</td></tr>
-      <tr><td class="hi">Organizador</td><td>El nodo primitivo, cuyos genes inhiben la BMP4 y dorsalizan el mesodermo; análogo al labio dorsal del blastoporo de <em>Xenopus</em>.</td></tr>
-      <tr><td class="hi">Reacción de zona</td><td>Cambio en las propiedades de la zona pelúcida tras el ingreso del espermatozoide, que impide la polispermia.</td></tr>
-      <tr><td class="hi">Reacción decidual</td><td>Cambio del endometrio a células poliédricas cargadas de glucógeno y lípidos, con edema; se extiende a todo el endometrio.</td></tr>
-      <tr><td class="hi">Reloj de segmentación</td><td>Expresión cíclica de genes NOTCH y WNT que determina la formación sucesiva de los somitas.</td></tr>
-      <tr><td class="hi">Somitómeros</td><td>Segmentos de mesodermo paraxial con células en espirales concéntricas; en la cabeza forman neurómeras, y de la región occipital a la caudal se organizan en somitas.</td></tr>
-      <tr><td class="hi">Vellosidad terciaria</td><td>Vellosidad placentaria definitiva, cuyo núcleo mesodérmico ya contiene células sanguíneas y capilares.</td></tr>
-      <tr><td class="hi">Vérnix caseosa</td><td>Sustancia lipídica blanquecina de las glándulas sebáceas que cubre la piel del feto al final de la gestación.</td></tr>
-    </tbody>
-  </table>
+  <p>Si prefieres empezar viendo en vez de leyendo, esta es la lista completa en orden del temario. Cada video abre aquí mismo al hacer clic; ninguno sale de la página.</p>
+
+  <div class="box plain">
+    <h4>🧠 Cómo aprovecharlos</h4>
+    <p style="margin-bottom:0">Mira el video <strong>antes</strong> de leer la unidad, no después. Ver el movimiento te da el «esqueleto» de lo que pasa, y entonces el texto deja de ser una lista de palabras y se vuelve la explicación detallada de algo que ya viste. Si un video se te hace largo, ponlo a velocidad 1.25× o 1.5×.</p>
   </div>
+
+  <div class="vid-grid" id="allVideos"></div>
+</section>
+
+<section class="unit" id="glosario">
+  <div class="unit-head"><span class="unit-num">§</span><h2>Diccionario</h2></div>
+  <p class="unit-sub">Todas las palabras técnicas de la guía, explicadas en lenguaje normal</p>
+
+  <p>Escribe cualquier palabra que no entiendas. También puedes hacer clic directamente sobre los términos <strong style="color:var(--accent);border-bottom:1px dotted var(--accent)">subrayados</strong> dentro del texto de cada unidad y aparecerá su definición ahí mismo.</p>
+
+  <input type="search" class="dict-search" id="dictSearch" placeholder="Buscar una palabra… (por ejemplo: blastocisto)" autocomplete="off">
+  <p class="dict-hint" id="dictCount"></p>
+  <div class="dict-list" id="dictList"></div>
 </section>
 
 <footer class="page">
@@ -3313,6 +4045,145 @@ footer.page{border-top:1px solid var(--border);margin-top:40px;padding:26px 0 60
   search.addEventListener('keydown', function(ev){
     if(ev.key === 'Escape'){ search.value = ''; clearMarks(); search.blur(); }
   });
+
+  /* ---------- VIDEOS (carga diferida) ---------- */
+  var seen = {}, allVids = [];
+
+  function vidCard(v){
+    var el = document.createElement('div');
+    el.className = 'vid';
+    var lang = v.lang ? '<span class="vid-lang">' + esc(v.lang) + '</span>' : '';
+    el.innerHTML =
+      '<button class="vid-thumb" data-id="' + esc(v.id) + '" aria-label="Reproducir: ' + esc(v.t) + '">' +
+        '<img src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">' +
+      '</button>' +
+      '<div class="vid-meta">' +
+        '<div class="vid-title">' + esc(v.t) + '</div>' +
+        '<div class="vid-sub">' +
+          '<span>' + esc(v.c) + '</span>' +
+          '<span class="dur">' + esc(v.d) + '</span>' + lang +
+          '<a href="https://www.youtube.com/watch?v=' + esc(v.id) + '" target="_blank" rel="noopener noreferrer">YouTube ↗</a>' +
+        '</div>' +
+      '</div>';
+    return el;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.vid-grid[data-videos]'), function(grid){
+    var vids;
+    try{ vids = JSON.parse(grid.getAttribute('data-videos')); }
+    catch(e){ vids = []; }
+    vids.forEach(function(v){
+      grid.appendChild(vidCard(v));
+      if(!seen[v.id]){ seen[v.id] = 1; allVids.push(v); }
+    });
+  });
+
+  var allBox = document.getElementById('allVideos');
+  if(allBox){
+    allVids.forEach(function(v){ allBox.appendChild(vidCard(v)); });
+    var vsub = document.querySelector('#videos .unit-sub');
+    if(vsub){ vsub.textContent = 'Los ' + allVids.length + ' videos de la guía reunidos · todos verificados y en español salvo donde se indica'; }
+  }
+
+  document.addEventListener('click', function(ev){
+    var btn = ev.target.closest('.vid-thumb');
+    if(!btn || btn.classList.contains('playing')) return;
+    var id = btn.getAttribute('data-id');
+    btn.classList.add('playing');
+    btn.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Video de YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  });
+
+  /* ---------- DICCIONARIO EMERGENTE ---------- */
+  var DICT = window.EMB_DICT || {};
+  var dictKeys = {};
+  Object.keys(DICT).forEach(function(k){ dictKeys[k.toLowerCase()] = k; });
+
+  function normalize(t){ return t.replace(/\s+/g, ' ').trim().toLowerCase(); }
+
+  var openPop = null;
+  function closePop(){
+    if(openPop && openPop.parentNode){ openPop.parentNode.removeChild(openPop); }
+    openPop = null;
+  }
+
+  function showDef(el, key){
+    closePop();
+    var pop = document.createElement('div');
+    pop.className = 'defpop';
+    pop.innerHTML = '<button class="close" aria-label="Cerrar">×</button><b>' +
+      esc(dictKeys[key]) + '</b>' + esc(DICT[dictKeys[key]]);
+    document.body.appendChild(pop);
+
+    var r = el.getBoundingClientRect();
+    var top = r.bottom + window.scrollY + 7;
+    var left = r.left + window.scrollX;
+    var w = pop.offsetWidth;
+    if(left + w > window.innerWidth - 14){ left = Math.max(10, window.innerWidth - w - 14); }
+    if(top + pop.offsetHeight > window.scrollY + window.innerHeight - 10){
+      top = r.top + window.scrollY - pop.offsetHeight - 7;
+    }
+    pop.style.top = top + 'px';
+    pop.style.left = left + 'px';
+    pop.querySelector('.close').addEventListener('click', closePop);
+    openPop = pop;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('em.term'), function(el){
+    var key = normalize(el.textContent);
+    if(!dictKeys[key]) return;
+    el.classList.add('has-def');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.setAttribute('title', 'Clic para ver la definición');
+    el.addEventListener('click', function(ev){ ev.stopPropagation(); showDef(el, key); });
+    el.addEventListener('keydown', function(ev){
+      if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); ev.stopPropagation(); showDef(el, key); }
+    });
+  });
+
+  document.addEventListener('click', function(ev){
+    if(openPop && !ev.target.closest('.defpop')){ closePop(); }
+  });
+  document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape'){ closePop(); } });
+  window.addEventListener('resize', closePop);
+
+  /* ---------- DICCIONARIO COMPLETO ---------- */
+  var dictList = document.getElementById('dictList');
+  var dictCount = document.getElementById('dictCount');
+  var dictSearch = document.getElementById('dictSearch');
+
+  if(dictList){
+    var entries = Object.keys(DICT).sort(function(a, b){
+      return a.localeCompare(b, 'es', { sensitivity: 'base' });
+    });
+
+    function renderDict(q){
+      q = normalize(q || '');
+      var shown = entries.filter(function(k){
+        return !q || normalize(k).indexOf(q) !== -1 || normalize(DICT[k]).indexOf(q) !== -1;
+      });
+      dictList.innerHTML = '';
+      if(!shown.length){
+        dictList.innerHTML = '<p class="dict-empty">No encontré esa palabra. Prueba con una parte de ella, o búscala en el buscador de arriba para verla dentro del texto.</p>';
+      } else {
+        shown.forEach(function(k){
+          var d = document.createElement('div');
+          d.className = 'dict-item';
+          d.innerHTML = '<b>' + esc(k.charAt(0).toUpperCase() + k.slice(1)) + '</b><span>' + esc(DICT[k]) + '</span>';
+          dictList.appendChild(d);
+        });
+      }
+      dictCount.textContent = shown.length + ' de ' + entries.length + ' palabras';
+    }
+
+    renderDict('');
+    var dtimer = null;
+    dictSearch.addEventListener('input', function(){
+      clearTimeout(dtimer);
+      dtimer = setTimeout(function(){ renderDict(dictSearch.value); }, 140);
+    });
+  }
 
   /* ---------- ATAJO / PARA BUSCAR ---------- */
   document.addEventListener('keydown', function(ev){
